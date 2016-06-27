@@ -1,0 +1,1 @@
+HelloW.o: ../HelloW.c

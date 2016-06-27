@@ -1,0 +1,19 @@
+09:42:13 **** Build of configuration Debug for project DiffTest ****
+make all 
+Building file: ../HelloW.c
+Invoking: Cygwin C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"HelloW.d" -MT"HelloW.o" -o "HelloW.o" "../HelloW.c"
+Finished building: ../HelloW.c
+ 
+Building target: DiffTest.exe
+Invoking: Cygwin C++ Linker
+g++  -o "DiffTest.exe"  ./HelloW.o   
+/usr/lib/../lib/libcygwin.a(libcmain.o): In function `main':
+/usr/src/debug/cygwin-2.5.1-1/winsup/cygwin/lib/libcmain.c:39: undefined reference to `WinMain'
+/usr/src/debug/cygwin-2.5.1-1/winsup/cygwin/lib/libcmain.c:39:(.text.startup+0x7f): relocation truncated to fit: R_X86_64_PC32 against undefined symbol `WinMain'
+collect2: error: ld returned 1 exit status
+make: *** [DiffTest.exe] Error 1
+makefile:44: recipe for target 'DiffTest.exe' failed
+
+09:42:14 Build Finished (took 581ms)
+

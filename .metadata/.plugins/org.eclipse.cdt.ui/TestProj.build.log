@@ -1,0 +1,19 @@
+09:34:00 **** Build of configuration Debug for project TestProj ****
+make all 
+Building file: ../HelloWorld.c
+Invoking: Cygwin C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"HelloWorld.d" -MT"HelloWorld.o" -o "HelloWorld.o" "../HelloWorld.c"
+Finished building: ../HelloWorld.c
+ 
+Building target: TestProj.exe
+Invoking: Cygwin C Linker
+gcc  -o "TestProj.exe"  ./HelloWorld.o   
+/usr/lib/../lib/libcygwin.a(libcmain.o): In function `main':
+/usr/src/debug/cygwin-2.5.1-1/winsup/cygwin/lib/libcmain.c:39: undefined reference to `WinMain'
+makefile:29: recipe for target 'TestProj.exe' failed
+/usr/src/debug/cygwin-2.5.1-1/winsup/cygwin/lib/libcmain.c:39:(.text.startup+0x7f): relocation truncated to fit: R_X86_64_PC32 against undefined symbol `WinMain'
+collect2: error: ld returned 1 exit status
+make: *** [TestProj.exe] Error 1
+
+09:34:01 Build Finished (took 498ms)
+

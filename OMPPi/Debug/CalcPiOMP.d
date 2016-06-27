@@ -1,0 +1,1 @@
+CalcPiOMP.o: ../CalcPiOMP.c

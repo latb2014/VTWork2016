@@ -1,0 +1,1 @@
+HelloWorldOMP.o: ../HelloWorldOMP.c

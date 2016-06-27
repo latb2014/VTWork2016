@@ -1,0 +1,14 @@
+09:27:19 **** Incremental Build of configuration Debug for project BeginTest ****
+make all 
+Building target: BeginTest.exe
+Invoking: Cygwin C Linker
+gcc  -o "BeginTest.exe"  ./Hello.o   
+/usr/lib/../lib/libcygwin.a(libcmain.o): In function `main':
+/usr/src/debug/cygwin-2.5.1-1/winsup/cygwin/lib/libcmain.c:39: undefined reference to `WinMain'
+makefile:29: recipe for target 'BeginTest.exe' failed
+/usr/src/debug/cygwin-2.5.1-1/winsup/cygwin/lib/libcmain.c:39:(.text.startup+0x7f): relocation truncated to fit: R_X86_64_PC32 against undefined symbol `WinMain'
+collect2: error: ld returned 1 exit status
+make: *** [BeginTest.exe] Error 1
+
+09:27:20 Build Finished (took 308ms)
+

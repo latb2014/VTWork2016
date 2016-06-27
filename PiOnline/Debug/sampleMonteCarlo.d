@@ -1,0 +1,1 @@
+sampleMonteCarlo.o: ../sampleMonteCarlo.c

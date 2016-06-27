@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;threadingFileI&apos; to &apos;threadingFileIO&apos;" description="Rename resource &apos;threadingFileI&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/threadingFileI" name="threadingFileIO" stamp="1465232747547" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;threadingFileIO&apos; to &apos;ThreadingFileIO&apos;" description="Rename resource &apos;threadingFileIO&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/threadingFileIO" name="ThreadingFileIO" stamp="1465232779703" updateReferences="true"/>
+</session>

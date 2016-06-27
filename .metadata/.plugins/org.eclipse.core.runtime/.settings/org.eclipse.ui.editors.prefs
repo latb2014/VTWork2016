@@ -1,0 +1,12 @@
+coverage_stylePreferences=NONE
+coverage_text=false
+currentLineColor=32,55,57
+eclipse.preferences.version=1
+nocoverage_stylePreferences=NONE
+nocoverage_text=false
+org.eclipse.cdt.ui.occurrenceIndicationColor=102,102,102
+org.eclipse.cdt.ui.writeOccurrenceIndicationColor=54,109,109
+overviewRuler_migration=migrated_3.1
+spacesForTabs=true
+thcoverage_stylePreferences=NONE
+thcoverage_text=false

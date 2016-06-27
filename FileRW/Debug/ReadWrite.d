@@ -1,0 +1,1 @@
+ReadWrite.o: ../ReadWrite.c

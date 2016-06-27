@@ -1,0 +1,1 @@
+ForkBomb.o: ../ForkBomb.c

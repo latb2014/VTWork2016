@@ -1,0 +1,6 @@
+10:58:06 **** Incremental Build of configuration Debug for project PiOnline ****
+make all 
+make: Nothing to be done for 'all'.
+
+10:58:06 Build Finished (took 93ms)
+

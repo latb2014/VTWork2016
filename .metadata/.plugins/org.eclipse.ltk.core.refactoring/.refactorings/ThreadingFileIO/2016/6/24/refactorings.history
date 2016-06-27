@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ThreadingFileIO/threadingAndFileIO&apos; to &apos;threadingAndFileIO.c&apos;" description="Rename resource &apos;threadingAndFileIO&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="threadingAndFileIO" name="threadingAndFileIO.c" stamp="1465232823175" updateReferences="true"/>
+</session>
