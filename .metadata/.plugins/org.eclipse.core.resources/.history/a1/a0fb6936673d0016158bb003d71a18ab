@@ -26,8 +26,7 @@ playDirectoryNames playToRead(playNums numArgs){
 
 	char playName[30];
 	playDirectoryNames directoryNames;
-	playNums play;
-	play = numArgs;
+	playNums play = numArgs;
 	switch(play.folder){
 	case 0://Comedy
 		strcpy(directoryNames.playCategory, "Comedy");
@@ -182,15 +181,14 @@ playDirectoryNames playToRead(playNums numArgs){
 
 void *reading(void *arg){
 	pthread_mutex_lock(&directoryCreation);
-
+	printf("\nenter thread\n");
+	fflush(stdout);
 	FILE *fp;
 
 	playNums* playInitialize = (playNums *)arg;
 	playDirectoryNames namesOfPlay;
 	char playDirectory[50] = "C:\\Users\\Barrett\\workspace\\ShakespeareWorks\\";
 
-	printf("\nenter thread folder: %d   file: %d\n", playInitialize->folder, playInitialize->playNum);
-	fflush(stdout);
 
 	namesOfPlay = playToRead(*playInitialize);
 	strcpy(playDirectory, strcat(playDirectory, namesOfPlay.playCategory));
@@ -198,11 +196,10 @@ void *reading(void *arg){
 	strcpy(playDirectory, strcat(playDirectory, namesOfPlay.playFileName));
 
 	fp = fopen(playDirectory, "r+");//open text file
-	printf("\nopen %s\n", playDirectory);
-	fflush(stdout);
 	pthread_mutex_unlock(&directoryCreation);
 
-
+	printf("\nopen %s\n", playDirectory);
+	fflush(stdout);
 
 	//fprintf(fp, "\n\nSUH DUDE\n\n");
 
@@ -224,8 +221,8 @@ int main(){
 				for(int k = 0; k < 18; k++){
 					mainPlay.playNum = k;
 					pthread_create(&threads[k], NULL, reading, (void *)&mainPlay);
-					//printf("\nadd %d\n", k);
-					//fflush(stdout);
+					printf("\nadd %d\n", k);
+					fflush(stdout);
 				}
 				break;
 			case 1://History
@@ -233,26 +230,26 @@ int main(){
 				for(int j = 0; j < 10; j++){
 					mainPlay.playNum = j;
 					pthread_create(&threads[j+18], NULL, reading, (void *)&mainPlay);
-					//printf("\nadd %d\n", j);
-					//fflush(stdout);
+					printf("\nadd %d\n", j);
+					fflush(stdout);
 				}
 				break;
-			case 2://Poetry
+			case 2://History
 				mainPlay.folder = i;
 				for(int m = 0; m < 4; m++){
 					mainPlay.playNum = m;
 					pthread_create(&threads[m+28], NULL, reading, (void *)&mainPlay);
-					//printf("\nadd %d\n", m);
-					//fflush(stdout);
+					printf("\nadd %d\n", m);
+					fflush(stdout);
 				}
 				break;
-			case 3://Tragedy
+			case 3://History
 				mainPlay.folder = i;
 				for(int n = 0; n < 10; n++){
 					mainPlay.playNum = n;
 					pthread_create(&threads[n+32], NULL, reading, (void *)&mainPlay);
-					//printf("\nadd %d\n", n);
-					//fflush(stdout);
+					printf("\nadd %d\n", n);
+					fflush(stdout);
 				}
 				break;
 		}
