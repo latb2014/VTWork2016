@@ -1,0 +1,171 @@
+/*
+ * WordCount.c
+ *
+ *  Created on: Jun 28, 2016
+ *      Author: Barrett
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+struct playNums{
+	int folder;
+	int playNum;
+};
+
+char playToRead(){
+	char* playName[];
+	struct playNums play;
+	switch(play->folder){
+	case 0://Comedy
+		switch(play->playNum){
+			case 0:
+				*playName = "AllsWellThatEndsWell";
+				break;
+			case 1:
+				*playName = "AMidsummerNightsDream";
+				break;
+			case 2:
+				*playName = "AsYouLikeIt";
+				break;
+			case 3:
+				*playName = "Cymbeline";
+				break;
+			case 4:
+				*playName = "LovesLaborsLost";
+				break;
+			case 5:
+				*playName = "MeasureForMeasure";
+				break;
+			case 6:
+				*playName = "MuchAdoAboutNothing";
+				break;
+			case 7:
+				*playName = "PericlesPrinceOfTyre";
+				break;
+			case 8:
+				*playName = "TheComedyOfErrors";
+				break;
+			case 9:
+				*playName = "TheMerchantOfVenice";
+				break;
+			case 10:
+				*playName = "TheMerryWivesOfWindsor";
+				break;
+			case 11:
+				*playName = "TheTamingOfTheShrew";
+				break;
+			case 12:
+				*playName = "TheTempest";
+				break;
+			case 13:
+				*playName = "TheTwoGentlemenOfVerona";
+				break;
+			case 14:
+				*playName = "TheWintersTale";
+				break;
+			case 15:
+				*playName = "TroliusAndCressida";
+				break;
+			case 16:
+				*playName = "TwelfthNight";
+				break;
+			case 17:
+				*playName = "TwoNobleKinsmen";
+				break;
+		}
+		break;
+	case 1://History
+		switch(play -> playNum){
+			case 0:
+				*playName = "HenryIVPartI";
+				break;
+			case 1:
+				*playName = "HenryIVPartII";
+				break;
+			case 2:
+				*playName = "HenryV";
+				break;
+			case 3:
+				*playName = "HenryVIII";
+				break;
+			case 4:
+				*playName = "HenryVIPartI";
+				break;
+			case 5:
+				*playName = "HenryVIPartII";
+				break;
+			case 6:
+				*playName = "HenryVIPartIII";
+				break;
+			case 7:
+				*playName = "KingJohn";
+				break;
+			case 8:
+				*playName = "RichardII";
+				break;
+			case 9:
+				*playName = "RichardIII";
+				break;
+		}
+		break;
+	case 2://Poetry
+		switch(play -> playNum){
+			case 0:
+				*playName = "Sonnets";
+				break;
+			case 1:
+				*playName = "ThePheonixAndTheTurtle";
+				break;
+			case 2:
+				*playName = "TheRapeOfLucrece";
+				break;
+			case 3:
+				*playName = "VenusAndAdonis";
+				break;
+		}
+		break;
+	case 3://Tragedy
+		switch(play -> playNum){
+			case 0:
+				*playName = "AntonyAndCleopatra";
+				break;
+			case 1:
+				*playName = "Coriolanus";
+				break;
+			case 2:
+				*playName = "Hamlet";
+				break;
+			case 3:
+				*playName = "JuliusCaesar";
+				break;
+			case 4:
+				*playName = "KingLear";
+				break;
+			case 5:
+				*playName = "Macbeth";
+				break;
+			case 6:
+				*playName = "Othello";
+				break;
+			case 7:
+				*playName = "RomeoAndJuliet";
+				break;
+			case 8:
+				*playName = "TimonOfAthens";
+				break;
+			case 9:
+				*playName = "TitusAndronicus";
+				break;
+		}
+		break;
+
+	}
+	return playName;
+}
+
+int main(){
+	FILE *fp;
+	fp = fopen("C:\\Users\\Barrett\\threadingPrCo.txt", "r+");//open text file
+
+}

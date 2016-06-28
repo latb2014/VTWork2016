@@ -1,6 +1,6 @@
-09:53:55 **** Incremental Build of configuration Debug for project FinidingPi ****
+12:16:13 **** Build of configuration Debug for project FinidingPi ****
 make all 
-make: Nothing to be done for 'all'.
+Command canceled
 
-09:53:55 Build Finished (took 112ms)
+12:16:13 Build Cancelled (took 191ms)
 

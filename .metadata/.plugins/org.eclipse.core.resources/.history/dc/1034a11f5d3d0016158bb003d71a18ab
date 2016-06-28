@@ -1,0 +1,256 @@
+/*
+ * WordCount.c
+ *
+ *  Created on: Jun 28, 2016
+ *      Author: Barrett
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <string.h>
+
+typedef struct playNums{
+	int folder;
+	int playNum;
+
+}playNums;
+
+typedef struct playDirectoryNames{
+	char playCategory[10];
+	char playFileName[30];
+}playDirectoryNames;
+
+playDirectoryNames playToRead(playNums numArgs){
+
+	char playName[30];
+	playDirectoryNames directoryNames;
+	playNums play = numArgs;
+	switch(play.folder){
+	case 0://Comedy
+		strcpy(directoryNames.playCategory, "Comedy");
+		switch(play.playNum){
+			case 0:
+				strcpy(playName, "AllsWellThatEndsWell");
+				break;
+			case 1:
+				strcpy(playName, "AMidsummerNightsDream");
+				break;
+			case 2:
+				strcpy(playName, "AsYouLikeIt");
+				break;
+			case 3:
+				strcpy(playName, "Cymbeline");
+				break;
+			case 4:
+				strcpy(playName, "LovesLaborsLost");
+				break;
+			case 5:
+				strcpy(playName, "MeasureForMeasure");
+				break;
+			case 6:
+				strcpy(playName, "MuchAdoAboutNothing");
+				break;
+			case 7:
+				strcpy(playName, "PericlesPrinceOfTyre");
+				break;
+			case 8:
+				strcpy(playName, "TheComedyOfErrors");
+				break;
+			case 9:
+				strcpy(playName, "TheMerchantOfVenice");
+				break;
+			case 10:
+				strcpy(playName, "TheMerryWivesOfWindsor");
+				break;
+			case 11:
+				strcpy(playName, "TheTamingOfTheShrew");
+				break;
+			case 12:
+				strcpy(playName, "TheTempest");
+				break;
+			case 13:
+				strcpy(playName, "TheTwoGentlemenOfVerona");
+				break;
+			case 14:
+				strcpy(playName, "TheWintersTale");
+				break;
+			case 15:
+				strcpy(playName, "TroliusAndCressida");
+				break;
+			case 16:
+				strcpy(playName, "TwelfthNight");
+				break;
+			case 17:
+				strcpy(playName, "TwoNobleKinsmen");
+				break;
+		}
+		break;
+	case 1://History
+		strcpy(directoryNames.playCategory, "History");
+		switch(play.playNum){
+			case 0:
+				strcpy(playName, "HenryIVPartI");
+				break;
+			case 1:
+				strcpy(playName, "HenryIVPartII");
+				break;
+			case 2:
+				strcpy(playName, "HenryV");
+				break;
+			case 3:
+				strcpy(playName, "HenryVIII");
+				break;
+			case 4:
+				strcpy(playName, "HenryVIPartI");
+				break;
+			case 5:
+				strcpy(playName, "HenryVIPartII");
+				break;
+			case 6:
+				strcpy(playName, "HenryVIPartIII");
+				break;
+			case 7:
+				strcpy(playName, "KingJohn");
+				break;
+			case 8:
+				strcpy(playName, "RichardII");
+				break;
+			case 9:
+				strcpy(playName, "RichardIII");
+				break;
+		}
+		break;
+	case 2://Poetry
+		strcpy(directoryNames.playCategory, "History");
+		switch(play.playNum){
+			case 0:
+				strcpy(playName, "Sonnets");
+				break;
+			case 1:
+				strcpy(playName, "ThePheonixAndTheTurtle");
+				break;
+			case 2:
+				strcpy(playName, "TheRapeOfLucrece");
+				break;
+			case 3:
+				strcpy(playName, "VenusAndAdonis");
+				break;
+		}
+		break;
+	case 3://Tragedy
+		strcpy(directoryNames.playCategory, "Tragedy");
+		switch(play.playNum){
+			case 0:
+				strcpy(playName, "AntonyAndCleopatra");
+				break;
+			case 1:
+				strcpy(playName, "Coriolanus");
+				break;
+			case 2:
+				strcpy(playName, "Hamlet");
+				break;
+			case 3:
+				strcpy(playName, "JuliusCaesar");
+				break;
+			case 4:
+				strcpy(playName, "KingLear");
+				break;
+			case 5:
+				strcpy(playName, "Macbeth");
+				break;
+			case 6:
+				strcpy(playName, "Othello");
+				break;
+			case 7:
+				strcpy(playName, "RomeoAndJuliet");
+				break;
+			case 8:
+				strcpy(playName, "TimonOfAthens");
+				break;
+			case 9:
+				strcpy(playName, "TitusAndronicus");
+				break;
+		}
+		break;
+	}
+	strcpy(directoryNames.playFileName, playName);
+	return directoryNames;
+}
+
+void *reading(void *arg){
+	FILE *fp;
+
+	playNums* playInitialize = (playNums *)arg;
+	playDirectoryNames namesOfPlay;
+	char playDirectory[50] = "C:\\Users\\Barrett\\workspace\\ShakespeareWorks\\";
+
+	namesOfPlay = playToRead(*playInitialize);
+	strcpy(playDirectory, strcat(playDirectory, namesOfPlay.playCategory));
+	strcpy(playDirectory, strcat(playDirectory, "\\"));
+	strcpy(playDirectory, strcat(playDirectory, namesOfPlay.playFileName));
+
+	fp = fopen(playDirectory, "r+");//open text file
+
+	fprintf(fp, "\n\nSUH DUDE\n\n");
+
+	fclose(fp);
+	return NULL;
+}
+
+int main(){
+
+	playNums mainPlay;
+	pthread_t threads[42];//array of threads the size of how many threads I want
+	//INITIALIZING THREADS
+	for (int i = 0; i < 4; i++){//initialize threads using a for loop and alternating, evens write or print and odds read or scan
+		switch(i){
+			case 0://Comedy
+				mainPlay.folder = i;
+				for(int k = 0; k < 18; k++){
+					mainPlay.playNum = k;
+					pthread_create(&threads[k], NULL, reading, (void *)&mainPlay);
+				}
+				break;
+			case 1://History
+				mainPlay.folder = i;
+				for(int j = 0; j < 10; j++){
+					mainPlay.playNum = j;
+					pthread_create(&threads[j+18], NULL, reading, (void *)&mainPlay);
+				}
+				break;
+			case 2://History
+				mainPlay.folder = i;
+				for(int m = 0; m < 4; m++){
+					mainPlay.playNum = m;
+					pthread_create(&threads[m+28], NULL, reading, (void *)&mainPlay);
+				}
+				break;
+			case 3://History
+				mainPlay.folder = i;
+				for(int n = 0; n < 10; n++){
+					mainPlay.playNum = n;
+					pthread_create(&threads[n+32], NULL, reading, (void *)&mainPlay);
+				}
+				break;
+		}
+	}
+	//JOINING THREADS
+	for(int m = 0; m < 42; m++){//joining makes the main method sleep until the threads finish executing
+		pthread_join(threads[m], NULL);
+		//DEBUGGINGprintf("\n%d\n",m);
+		//DEBUGGINGfflush(stdout);
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+

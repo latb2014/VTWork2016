@@ -1,0 +1,24 @@
+/*
+ * WordCount.c
+ *
+ *  Created on: Jun 28, 2016
+ *      Author: Barrett
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+struct playNums{
+	int folder;
+	int playNum;
+};
+
+char[3] play(){
+
+}
+
+int main(){
+	FILE *fp;
+	fp = fopen("C:\\Users\\Barrett\\threadingPrCo.txt", "r+");//open text file
+
+}
