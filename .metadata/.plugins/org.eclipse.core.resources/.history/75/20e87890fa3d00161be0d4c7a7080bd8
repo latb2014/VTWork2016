@@ -11,9 +11,6 @@
 
 pthread_mutex_t directoryCreation = PTHREAD_MUTEX_INITIALIZER;
 
-pthread_mutex_t createNextThread = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t createThreadRelease = PTHREAD_COND_INITIALIZER;
-
 typedef struct playNums{
 	int folder;
 	int playNum;
@@ -184,6 +181,7 @@ playDirectoryNames playToRead(playNums numArgs){
 }
 
 void *reading(void *arg){
+	pthread_mutex_lock(&directoryCreation);
 
 	FILE *fp;
 
@@ -195,7 +193,6 @@ void *reading(void *arg){
 	fflush(stdout);
 
 	namesOfPlay = playToRead(*playInitialize);
-
 	strcpy(playDirectory, strcat(playDirectory, namesOfPlay.playCategory));
 	strcpy(playDirectory, strcat(playDirectory, "\\"));
 	strcpy(playDirectory, strcat(playDirectory, namesOfPlay.playFileName));
@@ -203,9 +200,8 @@ void *reading(void *arg){
 	fp = fopen(playDirectory, "r+");//open text file
 	printf("\nopen %s\n", playDirectory);
 	fflush(stdout);
-	pthread_mutex_lock(&createNextThread);
-	pthread_cond_signal(&createThreadRelease);
-	pthread_mutex_unlock(&createNextThread);
+	pthread_mutex_unlock(&directoryCreation);
+
 
 
 	//fprintf(fp, "\n\nSUH DUDE\n\n");
@@ -228,9 +224,7 @@ int main(){
 				for(int k = 0; k < 18; k++){
 					mainPlay.playNum = k;
 					pthread_create(&threads[k], NULL, reading, (void *)&mainPlay);
-					pthread_mutex_lock(&createNextThread);
-					pthread_cond_wait(&createThreadRelease, &createNextThread);
-					pthread_mutex_unlock(&createNextThread);
+					usleep(1000000);
 					//printf("\nadd %d\n", k);
 					//fflush(stdout);
 				}
@@ -240,9 +234,7 @@ int main(){
 				for(int j = 0; j < 10; j++){
 					mainPlay.playNum = j;
 					pthread_create(&threads[j+18], NULL, reading, (void *)&mainPlay);
-					pthread_mutex_lock(&createNextThread);
-					pthread_cond_wait(&createThreadRelease, &createNextThread);
-					pthread_mutex_unlock(&createNextThread);
+					usleep(1000000);
 					//printf("\nadd %d\n", j);
 					//fflush(stdout);
 				}
@@ -252,9 +244,7 @@ int main(){
 				for(int m = 0; m < 4; m++){
 					mainPlay.playNum = m;
 					pthread_create(&threads[m+28], NULL, reading, (void *)&mainPlay);
-					pthread_mutex_lock(&createNextThread);
-					pthread_cond_wait(&createThreadRelease, &createNextThread);
-					pthread_mutex_unlock(&createNextThread);
+					usleep(1000000);
 					//printf("\nadd %d\n", m);
 					//fflush(stdout);
 				}
@@ -264,9 +254,7 @@ int main(){
 				for(int n = 0; n < 10; n++){
 					mainPlay.playNum = n;
 					pthread_create(&threads[n+32], NULL, reading, (void *)&mainPlay);
-					pthread_mutex_lock(&createNextThread);
-					pthread_cond_wait(&createThreadRelease, &createNextThread);
-					pthread_mutex_unlock(&createNextThread);
+					usleep(1000000);
 					//printf("\nadd %d\n", n);
 					//fflush(stdout);
 				}

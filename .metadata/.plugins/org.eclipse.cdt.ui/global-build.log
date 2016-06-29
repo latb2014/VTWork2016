@@ -1,4 +1,4 @@
-15:54:59 **** Incremental Build of configuration Debug for project Shakespeare ****
+09:09:20 **** Incremental Build of configuration Debug for project Shakespeare ****
 make all 
 Building file: ../WordCount.c
 Invoking: Cygwin C Compiler
@@ -10,6 +10,6 @@ Invoking: Cygwin C Linker
 gcc  -o "Shakespeare.exe"  ./WordCount.o   
 Finished building target: Shakespeare.exe
  
-15:55:01 **** Incremental Build of configuration Debug for project Shakespeare ****
+09:09:29 **** Incremental Build of configuration Debug for project Shakespeare ****
 make all 
 make: Nothing to be done for 'all'.

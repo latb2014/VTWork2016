@@ -195,7 +195,6 @@ void *reading(void *arg){
 	fflush(stdout);
 
 	namesOfPlay = playToRead(*playInitialize);
-
 	strcpy(playDirectory, strcat(playDirectory, namesOfPlay.playCategory));
 	strcpy(playDirectory, strcat(playDirectory, "\\"));
 	strcpy(playDirectory, strcat(playDirectory, namesOfPlay.playFileName));
@@ -229,7 +228,7 @@ int main(){
 					mainPlay.playNum = k;
 					pthread_create(&threads[k], NULL, reading, (void *)&mainPlay);
 					pthread_mutex_lock(&createNextThread);
-					pthread_cond_wait(&createThreadRelease, &createNextThread);
+					pthread_cond_wait(&createThreadRelease);
 					pthread_mutex_unlock(&createNextThread);
 					//printf("\nadd %d\n", k);
 					//fflush(stdout);
@@ -241,7 +240,7 @@ int main(){
 					mainPlay.playNum = j;
 					pthread_create(&threads[j+18], NULL, reading, (void *)&mainPlay);
 					pthread_mutex_lock(&createNextThread);
-					pthread_cond_wait(&createThreadRelease, &createNextThread);
+					pthread_cond_wait(&createThreadRelease);
 					pthread_mutex_unlock(&createNextThread);
 					//printf("\nadd %d\n", j);
 					//fflush(stdout);
@@ -253,7 +252,7 @@ int main(){
 					mainPlay.playNum = m;
 					pthread_create(&threads[m+28], NULL, reading, (void *)&mainPlay);
 					pthread_mutex_lock(&createNextThread);
-					pthread_cond_wait(&createThreadRelease, &createNextThread);
+					pthread_cond_wait(&createThreadRelease);
 					pthread_mutex_unlock(&createNextThread);
 					//printf("\nadd %d\n", m);
 					//fflush(stdout);
@@ -265,7 +264,7 @@ int main(){
 					mainPlay.playNum = n;
 					pthread_create(&threads[n+32], NULL, reading, (void *)&mainPlay);
 					pthread_mutex_lock(&createNextThread);
-					pthread_cond_wait(&createThreadRelease, &createNextThread);
+					pthread_cond_wait(&createThreadRelease);
 					pthread_mutex_unlock(&createNextThread);
 					//printf("\nadd %d\n", n);
 					//fflush(stdout);

@@ -1,6 +1,6 @@
-15:55:01 **** Incremental Build of configuration Debug for project Shakespeare ****
+09:09:29 **** Incremental Build of configuration Debug for project Shakespeare ****
 make all 
 make: Nothing to be done for 'all'.
 
-15:55:01 Build Finished (took 80ms)
+09:09:30 Build Finished (took 128ms)
 

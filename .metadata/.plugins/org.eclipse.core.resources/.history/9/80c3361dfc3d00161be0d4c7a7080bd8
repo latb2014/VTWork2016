@@ -195,7 +195,6 @@ void *reading(void *arg){
 	fflush(stdout);
 
 	namesOfPlay = playToRead(*playInitialize);
-
 	strcpy(playDirectory, strcat(playDirectory, namesOfPlay.playCategory));
 	strcpy(playDirectory, strcat(playDirectory, "\\"));
 	strcpy(playDirectory, strcat(playDirectory, namesOfPlay.playFileName));
