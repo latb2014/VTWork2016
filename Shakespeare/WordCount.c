@@ -25,6 +25,12 @@ typedef struct playDirectoryNames{
 	char playFileName[30];
 }playDirectoryNames;
 
+typedef struct wordCounterList{
+	char word[200];
+	int count;
+	struct wordCounterList *next;
+}wordCounterList;
+
 playDirectoryNames playToRead(playNums numArgs){
 
 	char playName[30];
@@ -183,7 +189,34 @@ playDirectoryNames playToRead(playNums numArgs){
 	return directoryNames;
 }
 
-void *reading(void *arg){
+int reading(FILE playReadFile){
+	FILE playRead = playReadFile;
+	wordCounterList *wordList = malloc(sizeof(wordCounterList));
+
+	wordCounterList *conductor;
+
+	char tempKey[200];
+	char tempRead[200];
+	int inListAlready = 0;
+	int finished = 0;
+
+	while(finished == 0){
+		fscanf(playRead, "%s", tempKey);//find temperary key
+		conductor = wordList;
+		while(conductor != NULL){//see if key is already in the list
+			if(srtcmp(&tempKey, conductor->word) == 0){//if the string is in the list already
+				inListAlready = 1;
+				break;
+			}
+			conductor = conductor->next;
+		}
+		if(inListAlready == 0){//if key wasn't already in the list
+
+		}
+	}
+}
+
+void *playThread(void *arg){
 
 	FILE *fp;
 
@@ -203,6 +236,7 @@ void *reading(void *arg){
 	fp = fopen(playDirectory, "r+");//open text file
 	printf("\nopen %s\n", playDirectory);
 	fflush(stdout);
+
 	pthread_mutex_lock(&createNextThread);
 	pthread_cond_signal(&createThreadRelease);
 	pthread_mutex_unlock(&createNextThread);
@@ -227,7 +261,7 @@ int main(){
 				mainPlay.folder = i;
 				for(int k = 0; k < 18; k++){
 					mainPlay.playNum = k;
-					pthread_create(&threads[k], NULL, reading, (void *)&mainPlay);
+					pthread_create(&threads[k], NULL, playThread, (void *)&mainPlay);
 					pthread_mutex_lock(&createNextThread);
 					pthread_cond_wait(&createThreadRelease, &createNextThread);
 					pthread_mutex_unlock(&createNextThread);
@@ -239,7 +273,7 @@ int main(){
 				mainPlay.folder = i;
 				for(int j = 0; j < 10; j++){
 					mainPlay.playNum = j;
-					pthread_create(&threads[j+18], NULL, reading, (void *)&mainPlay);
+					pthread_create(&threads[j+18], NULL, playThread, (void *)&mainPlay);
 					pthread_mutex_lock(&createNextThread);
 					pthread_cond_wait(&createThreadRelease, &createNextThread);
 					pthread_mutex_unlock(&createNextThread);
@@ -251,7 +285,7 @@ int main(){
 				mainPlay.folder = i;
 				for(int m = 0; m < 4; m++){
 					mainPlay.playNum = m;
-					pthread_create(&threads[m+28], NULL, reading, (void *)&mainPlay);
+					pthread_create(&threads[m+28], NULL, playThread, (void *)&mainPlay);
 					pthread_mutex_lock(&createNextThread);
 					pthread_cond_wait(&createThreadRelease, &createNextThread);
 					pthread_mutex_unlock(&createNextThread);
@@ -263,7 +297,7 @@ int main(){
 				mainPlay.folder = i;
 				for(int n = 0; n < 10; n++){
 					mainPlay.playNum = n;
-					pthread_create(&threads[n+32], NULL, reading, (void *)&mainPlay);
+					pthread_create(&threads[n+32], NULL, playThread, (void *)&mainPlay);
 					pthread_mutex_lock(&createNextThread);
 					pthread_cond_wait(&createThreadRelease, &createNextThread);
 					pthread_mutex_unlock(&createNextThread);

@@ -1,15 +1,15 @@
-09:09:20 **** Incremental Build of configuration Debug for project Shakespeare ****
+11:58:53 **** Incremental Build of configuration Debug for project SequentialCalculatePi ****
 make all 
-Building file: ../WordCount.c
+Building file: ../CalcPiSeq.c
 Invoking: Cygwin C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"WordCount.d" -MT"WordCount.o" -o "WordCount.o" "../WordCount.c"
-Finished building: ../WordCount.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"CalcPiSeq.d" -MT"CalcPiSeq.o" -o "CalcPiSeq.o" "../CalcPiSeq.c"
+Finished building: ../CalcPiSeq.c
  
-Building target: Shakespeare.exe
+Building target: SequentialCalculatePi.exe
 Invoking: Cygwin C Linker
-gcc  -o "Shakespeare.exe"  ./WordCount.o   
-Finished building target: Shakespeare.exe
+gcc  -o "SequentialCalculatePi.exe"  ./CalcPiSeq.o   
+Finished building target: SequentialCalculatePi.exe
  
-09:09:29 **** Incremental Build of configuration Debug for project Shakespeare ****
+11:58:55 **** Incremental Build of configuration Debug for project SequentialCalculatePi ****
 make all 
 make: Nothing to be done for 'all'.

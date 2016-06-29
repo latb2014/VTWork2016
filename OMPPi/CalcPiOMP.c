@@ -16,7 +16,7 @@
 #include <unistd.h>
 
 //GLOBAL VARIABLE
-int threadcount = 1024;//number of threads created
+int threadcount = 1000;//number of threads created
 
 
 int main(){
@@ -33,7 +33,7 @@ int main(){
 
 	//seed the rand function ONLY DO ONCE AND NOT IN ANY THREADS, THE NUMBERS WILL BECOME NOT RANDOM IF YOU DO AND IT WILL SKEW RESULTS
 
-	#pragma omp parallel num_threads(threadcount) private(answ, rand1, rand2, runope)
+	#pragma omp parallel num_threads(threadcount) shared(pointsinside) private(answ, rand1, rand2, run)
 	{
 
 		srand(omp_get_thread_num()+1.5);
@@ -44,6 +44,7 @@ int main(){
 				//idnum++;
 
 			printf("-------------------------\n| %f...%d..%f |\n-------------------------\n", rand1, run, rand2);
+			fflush(stdout);
 			answ = (rand1*rand1)+(rand2*rand2);
 
 			if(answ < 1){
@@ -51,7 +52,7 @@ int main(){
 					pointsinside++;
 				//printf("\n\nadded: %d  :  %f\n\n", pointsinside, answ);
 			}
-			run++;
+				run++;
 		}
 
 	}

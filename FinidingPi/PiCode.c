@@ -13,7 +13,7 @@
 #include <math.h>
 
 //GLOBAL VARIABLE
-int threadcount = 102400;//number of threads created 250000
+int threadcount = 100000;//number of threads created 250000
 
 //STRUCTURES
 struct randoms{//used to pass the two random numbers
